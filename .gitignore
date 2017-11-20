@@ -1,5 +1,2 @@
 *.csv
 *.pyc
-
-credentials.py
-twHandle.txt
