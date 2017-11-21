@@ -27,3 +27,5 @@ def get_all_followers(screen_name):
             print tw_sn
             tw_export = [tw_id, tw_sn]
             writer.writerow(tw_export)
+    print("Export Done !")
+    print("Current handle: @" + screen_name)
