@@ -18,14 +18,18 @@ def get_all_followers(screen_name):
     #write the csv
     with open(file_dir + '/export/followersList_@' + screen_name + '.csv', 'wb') as f:
         writer = csv.writer(f, delimiter='|')
-        writer.writerow(["id","screen name"])
+        writer.writerow(["id","screen name","followers","language"])
 
         for follower in api.followers_ids(screen_name):
             tw_id = api.get_user(follower).id
+            #tw_nm = api.get_user(follower).name
             tw_sn = api.get_user(follower).screen_name
+            tw_fc = api.get_user(follower).followers_count
+            tw_ln = api.get_user(follower).lang
+            
             #tw_loc = api.get_user(follower).location
             print tw_sn
-            tw_export = [tw_id, tw_sn]
+            tw_export = [tw_id, tw_sn, tw_fc, tw_ln]
             writer.writerow(tw_export)
     print("Export Done !")
-    print("Current handle: @" + screen_name)
+    print("\rCurrent handle: @" + screen_name)
